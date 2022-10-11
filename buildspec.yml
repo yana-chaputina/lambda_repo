@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  build:
+    commands:
+      - echo Build1 started on `date`
+      - gradle clean build
+  post_build:
+    commands:
+      - echo Build1 completed on `date`
+      - aws cloudformation package --template-file samTemplate.yml --s3-bucket ianapriazhkinabucket --output-template-file outputSamTemplate.yml
+artifacts:
+  files:
+    - outputSamTemplate.yml
