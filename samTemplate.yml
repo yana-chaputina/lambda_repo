@@ -4,6 +4,7 @@ Resources:
   LambdaApplication:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: aws.example.handler.ImageProcessHandler::handleRequest
+      CodeUri: build/libs/lambda_repo-1.0.jar
+      Handler: aws.example.handler.ImageProcessHandler
       Runtime: java8
       MemorySize: 512

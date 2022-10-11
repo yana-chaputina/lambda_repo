@@ -20,7 +20,6 @@ import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 
 public class ImageProcessHandler implements RequestHandler<Map<String, Object>, APIGatewayProxyResponseEvent> {
-
     private static final String SQS_QUEUE_NAME = "sqs-uploads-notification-queue";
     private static final String TOPIC_ARN = "arn:aws:sns:us-east-1:619976505592:sns-uploads-notification-topic";
     private static final String REGION = "us-east-1";

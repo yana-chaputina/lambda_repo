@@ -11,8 +11,7 @@ phases:
       - echo Build completed
   post_build:
     commands:
-      - aws cloudformation package --template-file samTemplate.yml --s3-bucket ianapriazhkinabucket --output-template-file outputSamTemplate.yml
+      - sam package --template-file samTemplate.yml --s3-bucket ianapriazhkinabucket --output-template-file outputSamTemplate.yml
 artifacts:
   files:
-    - build/libs/*.jar
     - outputSamTemplate.yml
