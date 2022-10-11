@@ -1,0 +1,36 @@
+plugins {
+    id 'java-library'
+}
+
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.1004'
+    implementation 'com.amazonaws:aws-lambda-java-events:3.1.0'
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
+}
+
+jar {
+    setZip64(true)
+
+    manifest {
+        attributes('name': "lambda")
+    }
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
+}
