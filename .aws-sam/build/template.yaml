@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  LambdaApplication:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ..\..\build\distributions\lambda_repo-1.0.zip
+      Handler: aws.example.handler.ImageProcessHandler
+      Runtime: java8
+      MemorySize: 512

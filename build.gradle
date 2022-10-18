@@ -14,17 +14,17 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.1004'
-    implementation 'com.amazonaws:aws-lambda-java-events:3.1.0'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.12.472'
+    implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
 }
 
 jar {
-    manifest {
-        attributes('name': "lambda_repo")
+    manifest{
+        attributes("name":"lambda-repo")
     }
-    from compileJava
-    from processResources
+    zip64 true
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     into('lib') {
         from configurations.runtimeClasspath
     }
